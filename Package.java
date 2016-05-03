@@ -1,59 +1,54 @@
 import java.util.ArrayList;
 import java.util.List;
 
+/*	
+ * Created by: Justyna Cichosz
+ * 	Date: 2/05/2016
+ * 	Purpose: Defines a 'Package' object that contains the package name and a list of primary dependencies.
+ */
+
+
 public class Package {
 
 	private String name;					// Name of the package
-	private List<String> dependencies;		// Stores the list of dependencies of the package
+	private List<String> dependencies;		// Stores the list of primary dependencies of the package
 	
-		
+	// Initialises a 'Package' object with a name 
 	public Package(String name) {
 		this.name = name;
 		dependencies = new ArrayList<String>();
 	}
 	
+	
 	// Adds package to list of dependencies only if not a duplicate entry.
 	public void addDependency(String pckgName) {
-		
 		if ( !dependencies.contains(pckgName)) {
 			dependencies.add(pckgName);
-			
-		} else {}
-	}
-	
-	// Returns a list of packages sorted alphabetically.
-	public List<String> getAlphabeticalDependencies() {
-		java.util.Collections.sort(dependencies);
-		return dependencies;
-	}
-	
-	// Prints out the dependencies in alphabetical order. 
-	// Does not include the package itself in case of circular dependencies.
-	public void printDependencies() {
-		java.util.Collections.sort(dependencies);
-		
-		for ( int i = 0; i < dependencies.size(); i++ ) {
-			
-			if ( dependencies.get(i) != name ) {
-				System.out.print( dependencies.get(i) + " ");
-			}
 		}
 	}
 	
 	
+	// Returns the name of the package.
 	public String getName() {
 		return name;
 	}
 
+	
+	// Changes the name of the package.
 	public void setName(String name) {
 		this.name = name;
 	}
 
+	
+	// Returns the list of dependencies.
 	public List<String> getDependencies() {
 		return dependencies;
 	}
 
+	
+	// Changes the list of dependencies.
 	public void setDependencies(List<String> dependencies) {
 		this.dependencies = dependencies;
 	}
+
 }
